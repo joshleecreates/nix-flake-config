@@ -10,11 +10,15 @@
       ./hardware-configuration.nix
     ];
 
+  # Bootloader
   boot.loader.grub.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.devices = [ "/dev/sda/" ];
+
   networking.hostName = "nixos-desktop"; # Define your hostname.
   networking.networkmanager.enable = true;
+
+  # Don't ask for sudo password
+  security.sudo.wheelNeedsPassword = false;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -34,13 +38,14 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.josh = {
     isNormalUser = true;
     description = "Josh Lee";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
+    shell = pkgs.zsh;
   };
 
   # Allow unfree packages
@@ -61,7 +66,15 @@
   ];
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
+
+  users.users.josh.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAg/E2UkXORp58O3zxp0dQird+UcvdJkCpKbZj5+ccmh josh@joshuamlee.com"
+  ];
 
   system.stateVersion = "23.11"; # Did you read the comment?
 
