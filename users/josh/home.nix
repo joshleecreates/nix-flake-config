@@ -11,10 +11,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # pkgs.hello
-    pkgs.tmux
     pkgs.htop
-    pkgs.oh-my-zsh
     pkgs.zsh-powerlevel10k
     pkgs.thefuck
   ];
