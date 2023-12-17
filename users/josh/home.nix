@@ -14,13 +14,15 @@
     pkgs.htop
     pkgs.thefuck
     pkgs.fortune
-    pkgs.neovim
     pkgs.oh-my-zsh
     pkgs.tmux
     pkgs.git
     pkgs.vim
     pkgs.wget
     pkgs.zsh-syntax-highlighting
+    pkgs.fzf
+    pkgs.nodejs_18
+    pkgs.typescript
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -88,7 +90,7 @@
           set -g @dracula-show-powerline true
           set -g @dracula-refresh-rate 10
           set -g @dracula-git-show-remote-status true
-          set -g @dracula-plugins "cpu-usage ram-usage network-bandwidth time"
+          set -g @dracula-plugins "time cpu-usage"
         '';
       }
     ];
@@ -162,7 +164,29 @@
       set -sg escape-time 10
     '';
   };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      nvim-tree-lua
+      telescope-nvim
+      telescope-zoxide
+    ];
+    extraConfig = ''
+      :luafile ~/.config/nvim/lua/init.lua
+    '';
+  };
+
   programs.htop = {
     enable = true;
+  };
+
+  xdg.configFile.nvim = {
+    source = ./neovim/config;
+    recursive = true;
   };
 }
