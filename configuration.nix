@@ -59,11 +59,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    tmux
-    git
-    neovim
-    unzip
+    tailscale
     home-manager
   ];
 
@@ -82,6 +78,9 @@
 
   # Enable QEMU Guest Service
   services.qemuGuest.enable = true;
+
+  # Enable Tailscale
+  services.tailscale.enable = true;
 
   programs.ssh.startAgent = true;
 }

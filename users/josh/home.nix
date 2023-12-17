@@ -16,6 +16,10 @@
     pkgs.fortune
     pkgs.neovim
     pkgs.oh-my-zsh
+    pkgs.tmux
+    pkgs.git
+    pkgs.vim
+    pkgs.wget
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
