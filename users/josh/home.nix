@@ -20,6 +20,7 @@
     pkgs.git
     pkgs.vim
     pkgs.wget
+    pkgs.zsh-syntax-highlighting
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -48,7 +49,7 @@
     enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-
+    syntaxHighlighting.enable = true;
     plugins = [
       {
         name = "powerlevel10k-config";
@@ -83,9 +84,10 @@
       {
         plugin = dracula;
         extraConfig = ''
-          set -g @dracula-show-battery true
+          set -g @dracula-show-battery false
           set -g @dracula-show-powerline true
           set -g @dracula-refresh-rate 10
+          set -g @dracula-git-show-remote-status true
         '';
       }
     ];
