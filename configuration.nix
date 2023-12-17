@@ -44,7 +44,7 @@
   users.users.josh = {
     isNormalUser = true;
     description = "Josh Lee";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -62,6 +62,8 @@
     tailscale
     home-manager
   ];
+
+  virtualisation.docker.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {

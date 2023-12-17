@@ -11,16 +11,13 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.htop
     pkgs.thefuck
     pkgs.fortune
     pkgs.oh-my-zsh
-    pkgs.tmux
     pkgs.git
     pkgs.vim
     pkgs.wget
-    pkgs.zsh-syntax-highlighting
-    pkgs.fzf
+#    pkgs.zsh-syntax-highlighting
     pkgs.nodejs_18
     pkgs.typescript
   ];
