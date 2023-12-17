@@ -88,6 +88,7 @@
           set -g @dracula-show-powerline true
           set -g @dracula-refresh-rate 10
           set -g @dracula-git-show-remote-status true
+          set -g @dracula-plugins "cpu-usage ram-usage network-bandwidth time"
         '';
       }
     ];
