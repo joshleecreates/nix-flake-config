@@ -43,25 +43,33 @@
   #programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
     # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     # dotDir = ".config/zsh";
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "thefuck" "tmux" "kubectl" "vi-mode"];
-      theme = "powerlevel10k/powerlevel10k";
-    };
+
+    syntaxHighlighting.enable = true;
+    syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
+    syntaxHighlighting.patterns = { };
+    syntaxHighlighting.styles = { "globbing" = "none"; };
+
     plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k-config;
-        file = "p10k.zsh";
-      }
       {
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
+      {
+        name = "powerlevel10k-config";
+        src = ./p10k-config;
+        file = "p10k.zsh";
+      }
     ];
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" "tmux" "kubectl" "vi-mode"];
+      theme = "powerlevel10k";
+      # custom = "${pkgs.nur.repos.izorkin.oh-my-zsh-custom}"; 
+    };
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
