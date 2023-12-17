@@ -45,23 +45,18 @@
     enable = true;
     enableCompletion = true;
     # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    # dotDir = ".config/zsh";
-
-    syntaxHighlighting.enable = true;
-    syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
-    syntaxHighlighting.patterns = { };
-    syntaxHighlighting.styles = { "globbing" = "none"; };
+    dotDir = ".config/zsh";
 
     plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
       {
         name = "powerlevel10k-config";
         src = ./p10k-config;
         file = "p10k.zsh";
+      }
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
     ];
     oh-my-zsh = {
