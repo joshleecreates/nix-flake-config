@@ -40,11 +40,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  #programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     dotDir = ".config/zsh";
 
     plugins = [
@@ -62,8 +60,6 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "thefuck" "tmux" "kubectl" "vi-mode"];
-      theme = "powerlevel10k";
-      # custom = "${pkgs.nur.repos.izorkin.oh-my-zsh-custom}"; 
     };
     shellAliases = {
       ll = "ls -l";
