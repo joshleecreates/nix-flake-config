@@ -48,6 +48,7 @@
     shell = pkgs.zsh;
   };
 
+  home-manager.users.josh = import ./users/josh/home.nix;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
