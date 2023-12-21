@@ -10,6 +10,13 @@
     plugins = with pkgs.tmuxPlugins; [
       yank
       {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
+      resurrect
+      {
         plugin = dracula;
         extraConfig = ''
           set -g @dracula-show-battery false
@@ -17,6 +24,7 @@
           set -g @dracula-refresh-rate 10
           set -g @dracula-git-show-remote-status true
           set -g @dracula-plugins "time cpu-usage"
+          set -g @dracula-show-left-icon session
         '';
       }
     ];
