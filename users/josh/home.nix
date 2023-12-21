@@ -17,9 +17,9 @@
     pkgs.git
     pkgs.vim
     pkgs.wget
-#    pkgs.zsh-syntax-highlighting
     pkgs.nodejs_18
     pkgs.typescript
+    pkgs.gnumake
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -63,7 +63,7 @@
     ];
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "thefuck" "tmux" "kubectl" "vi-mode"];
+      plugins = [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
     };
     shellAliases = {
       ll = "ls -l";
