@@ -18,13 +18,9 @@
   # environment.
   home.packages = [
     pkgs.thefuck
-    pkgs.fortune
     pkgs.oh-my-zsh
     pkgs.git
-    pkgs.vim
     pkgs.wget
-    pkgs.nodejs_18
-    pkgs.typescript
     pkgs.gnumake
     pkgs.ranger
   ];
