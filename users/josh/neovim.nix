@@ -81,6 +81,20 @@
           require("which-key").setup()
         '';
       }
+      {
+        plugin = nvim-surround;
+        type = "lua";
+        config = ''
+          require("nvim-surround").setup()
+        '';
+      }
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = ''
+          require("nvim-autopairs").setup()
+        '';
+      }
     ];
     extraConfig = ''
       colorscheme tokyonight
