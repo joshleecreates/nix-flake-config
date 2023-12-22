@@ -9,13 +9,13 @@
     customPaneNavigationAndResize = true;
     plugins = with pkgs.tmuxPlugins; [
       yank
+      resurrect
       {
         plugin = continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
         '';
       }
-      resurrect
       {
         plugin = dracula;
         extraConfig = ''
@@ -96,6 +96,9 @@
 
       # remove delay for exiting insert mode with ESC in Neovim
       set -sg escape-time 10
+
+      # dont ask to kill pane
+      bind-key x kill-pane
     '';
   };
 }

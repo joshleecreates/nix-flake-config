@@ -25,5 +25,8 @@
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
     };
+    initExtra = ''
+      eval "$(zoxide init zsh)"
+    '';
   };
 }

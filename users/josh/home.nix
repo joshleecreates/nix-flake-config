@@ -23,6 +23,7 @@
     pkgs.wget
     pkgs.gnumake
     pkgs.ranger
+    pkgs.zoxide
   ];
 
   home.sessionVariables = {
