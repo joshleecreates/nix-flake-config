@@ -1,17 +1,17 @@
 { pkgs, ... }:
-let 
-  tokyo-night-tmux = pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "tokyo-night-tmux";
-      version = "unstable-2023-12-23";
-      src = pkgs.fetchFromGitHub {
-        owner = "janoamaral";
-        repo = "tokyo-night-tmux";
-        rev = "eb759e91085be3446778751341cbd3248705c608";
-        hash = "sha256-zGlaPEeRQqd7g9HA9pvf8wSTeXwD4Qh5JzD3nzZkKAQ=";
-      };
-    };
-in
+# let 
+#   tokyo-night-tmux = pkgs.tmuxPlugins.mkTmuxPlugin
+#     {
+#       pluginName = "tokyo-night-tmux";
+#       version = "unstable-2023-12-23";
+#       src = pkgs.fetchFromGitHub {
+#         owner = "janoamaral";
+#         repo = "tokyo-night-tmux";
+#         rev = "eb759e91085be3446778751341cbd3248705c608";
+#         hash = "sha256-zGlaPEeRQqd7g9HA9pvf8wSTeXwD4Qh5JzD3nzZkKAQ=";
+#       };
+#     };
+# in
 {
   programs.tmux = {
     enable = true;
@@ -22,7 +22,7 @@ in
     customPaneNavigationAndResize = true;
     plugins = with pkgs.tmuxPlugins; [
       yank
-      tokyo-night-tmux
+      # tokyo-night-tmux
       {
         plugin = resurrect;
         extraConfig = ''
@@ -35,17 +35,17 @@ in
           set -g @continuum-restore 'on'
         '';
       }
-      # {
-      #   plugin = dracula;
-      #   extraConfig = ''
-      #     set -g @dracula-show-battery false
-      #     set -g @dracula-show-powerline true
-      #     set -g @dracula-refresh-rate 10
-      #     set -g @dracula-git-show-remote-status true
-      #     set -g @dracula-plugins "time cpu-usage"
-      #     set -g @dracula-show-left-icon session
-      #   '';
-      # }
+      {
+        plugin = dracula;
+        extraConfig = ''
+          set -g @dracula-show-battery false
+          set -g @dracula-show-powerline true
+          set -g @dracula-refresh-rate 10
+          set -g @dracula-git-show-remote-status true
+          set -g @dracula-plugins "time cpu-usage"
+          set -g @dracula-show-left-icon session
+        '';
+      }
     ];
     extraConfig = ''
       set -g default-terminal "screen-256color"
