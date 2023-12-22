@@ -9,7 +9,12 @@
     customPaneNavigationAndResize = true;
     plugins = with pkgs.tmuxPlugins; [
       yank
-      resurrect
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
       {
         plugin = continuum;
         extraConfig = ''
