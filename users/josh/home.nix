@@ -24,10 +24,12 @@
     pkgs.gnumake
     pkgs.ranger
     pkgs.zoxide
+    pkgs.fzf
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    T_REPOS_DIR = "~/repos";
   };
 
   # Let Home Manager install and manage itself.

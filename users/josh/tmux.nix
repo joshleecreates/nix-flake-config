@@ -1,17 +1,28 @@
 { pkgs, ... }:
-# let 
-#   tokyo-night-tmux = pkgs.tmuxPlugins.mkTmuxPlugin
-#     {
-#       pluginName = "tokyo-night-tmux";
-#       version = "unstable-2023-12-23";
-#       src = pkgs.fetchFromGitHub {
-#         owner = "janoamaral";
-#         repo = "tokyo-night-tmux";
-#         rev = "eb759e91085be3446778751341cbd3248705c608";
-#         hash = "sha256-zGlaPEeRQqd7g9HA9pvf8wSTeXwD4Qh5JzD3nzZkKAQ=";
-#       };
-#     };
-# in
+let 
+  # tokyo-night-tmux = pkgs.tmuxPlugins.mkTmuxPlugin
+  #   {
+  #     pluginName = "tokyo-night-tmux";
+  #     version = "unstable-2023-12-23";
+  #     src = pkgs.fetchFromGitHub {
+  #       owner = "janoamaral";
+  #       repo = "tokyo-night-tmux";
+  #       rev = "eb759e91085be3446778751341cbd3248705c608";
+  #       hash = "sha256-zGlaPEeRQqd7g9HA9pvf8wSTeXwD4Qh5JzD3nzZkKAQ=";
+  #     };
+  #   };
+  t-smart-tmux-session-manager = pkgs.tmuxPlugins.mkTmuxPlugin
+    {
+      pluginName = "t-smart-tmux-session-manager";
+      version = "unstable-2023-12-23";
+      src = pkgs.fetchFromGitHub {
+        owner = "joshmedeski";
+        repo = "t-smart-tmux-session-manager";
+        rev = "629d5629ac50302ca6f0f3a44228fd73dedd8873";
+        hash = "sha256-cfvO4pzQOWJ9NE4/M/qXj0Rdbg/+wKr/qRS4rNKurDY=";
+      };
+    };
+in
 {
   programs.tmux = {
     enable = true;
@@ -22,6 +33,7 @@
     customPaneNavigationAndResize = true;
     plugins = with pkgs.tmuxPlugins; [
       yank
+      t-smart-tmux-session-manager
       # tokyo-night-tmux
       {
         plugin = resurrect;
@@ -120,4 +132,8 @@
       bind-key x kill-pane
     '';
   };
+
+  home.packages = [
+    t-smart-tmux-session-manager.src
+  ];
 }
