@@ -12,7 +12,13 @@
       nvim-treesitter.withAllGrammars
       telescope-zoxide
       vim-tmux-navigator
-      tokyonight-nvim
+      {
+        plugin = tokyonight-nvim;
+        type = "lua";
+        config = ''
+          vim.cmd[[colorscheme tokyonight-night]]
+        '';
+      }
       {
         plugin = conform-nvim;
         type = "lua";
