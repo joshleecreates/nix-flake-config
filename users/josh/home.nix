@@ -25,10 +25,17 @@
     pkgs.ranger
     pkgs.zoxide
     pkgs.fzf
-    # pkgs.ansible
-    # pkgs.ansible-lint
+    pkgs.ansible
+    pkgs.ansible-lint
     # pkgs.ansible-language-server
     pkgs.vscode-langservers-extracted
+
+    # ruby bundler
+    # https://savo.rocks/posts/jekyll-setup-in-nixos/
+    pkgs.bundix
+    pkgs.jekyll
+    pkgs.bundler
+
   ];
 
   home.sessionVariables = {
