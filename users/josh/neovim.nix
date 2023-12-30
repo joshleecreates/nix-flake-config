@@ -7,11 +7,23 @@
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-cmdline
+      cmp-path
+      nvim-cmp
+      luasnip
+      cmp_luasnip
+      fidget-nvim
       telescope-nvim
       nvim-web-devicons
+      nvim-treesitter
       nvim-treesitter.withAllGrammars
       telescope-zoxide
       vim-tmux-navigator
+      ansible-vim
+      vim-nix
       {
         plugin = tokyonight-nvim;
         type = "lua";
@@ -71,6 +83,7 @@
           require("lualine").setup()
         '';
       }
+      lualine-lsp-progress
       {
         plugin = nvim-tree-lua;
         type = "lua";
@@ -103,10 +116,9 @@
       }
     ];
     extraConfig = ''
-      colorscheme tokyonight
       :luafile ~/.config/nvim/options.lua
       :luafile ~/.config/nvim/keymaps.lua
-
+      :luafile ~/.config/nvim/cmp.lua
     '';
   };
   xdg.configFile.nvim = {

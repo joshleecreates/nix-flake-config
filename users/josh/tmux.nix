@@ -38,13 +38,8 @@ in
       {
         plugin = resurrect;
         extraConfig = ''
+          set -g @resurrect-strategy-nvim 'session'
           set -g @resurrect-capture-pane-contents 'on'
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
         '';
       }
       {
@@ -56,6 +51,12 @@ in
           set -g @dracula-git-show-remote-status true
           set -g @dracula-plugins "time cpu-usage"
           set -g @dracula-show-left-icon session
+        '';
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
         '';
       }
     ];
@@ -127,14 +128,6 @@ in
 
       # dont ask to kill pane
       bind-key x kill-pane
-
-      # tmux resurrect
-      resurrect_dir="$HOME/.tmux/resurrect"
-      set -g @resurrect-dir $resurrect_dir
-      set -g @resurrect-capture-pane-contents 'on'
-
-      # https://discourse.nixos.org/t/how-to-get-tmux-resurrect-to-restore-neovim-sessions/30819/5
-      set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/home/$USER/.nix-profile/bin/||g" $target | sponge $target'
     '';
   };
 

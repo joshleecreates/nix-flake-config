@@ -25,11 +25,15 @@
     pkgs.ranger
     pkgs.zoxide
     pkgs.fzf
+    pkgs.ansible
+    pkgs.ansible-lint
+    pkgs.ansible-language-server
+    pkgs.vscode-langservers-extracted
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    T_REPOS_DIR = "~/repos";
+    T_REPOS_DIR = "$HOME/repos";
   };
 
   # Let Home Manager install and manage itself.
