@@ -25,9 +25,9 @@
     pkgs.ranger
     pkgs.zoxide
     pkgs.fzf
-    pkgs.ansible
-    pkgs.ansible-lint
-    pkgs.ansible-language-server
+    # pkgs.ansible
+    # pkgs.ansible-lint
+    # pkgs.ansible-language-server
     pkgs.vscode-langservers-extracted
   ];
 
