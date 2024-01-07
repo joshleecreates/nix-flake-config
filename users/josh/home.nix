@@ -23,6 +23,8 @@
     pkgs.wget
     pkgs.gnumake
     pkgs.ranger
+    pkgs.elixir
+    pkgs.elixir-ls
     pkgs.zoxide
     pkgs.fzf
     pkgs.vscode-langservers-extracted

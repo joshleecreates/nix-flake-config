@@ -7,7 +7,18 @@
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      nvim-lspconfig
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = ''
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          require'lspconfig'.html.setup { capabilities = capabilities }
+          require'lspconfig'.elixirls.setup { 
+            cmd = {"${pkgs.elixir-ls}/bin/elixir-ls"};
+            capabilities = capabilities 
+          }
+        '';
+      }
       cmp-nvim-lsp
       cmp-buffer
       cmp-cmdline
@@ -18,8 +29,19 @@
       fidget-nvim
       telescope-nvim
       nvim-web-devicons
-      nvim-treesitter
-      nvim-treesitter.withAllGrammars
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = ''
+          require("nvim-treesitter.configs").setup({
+            auto_install = false,
+            highlight = {
+              enable = true,
+              disable = { }
+            },
+          })
+        '';
+      }
       telescope-zoxide
       vim-tmux-navigator
       ansible-vim
