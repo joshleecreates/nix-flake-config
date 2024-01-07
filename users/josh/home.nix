@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "josh";
-  home.homeDirectory = "/home/josh";
+  home.username = "joshlee";
+  home.homeDirectory = "/Users/joshlee";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
@@ -25,17 +25,7 @@
     pkgs.ranger
     pkgs.zoxide
     pkgs.fzf
-    pkgs.ansible
-    pkgs.ansible-lint
-    # pkgs.ansible-language-server
     pkgs.vscode-langservers-extracted
-
-    # ruby bundler
-    # https://savo.rocks/posts/jekyll-setup-in-nixos/
-    pkgs.bundix
-    pkgs.jekyll
-    pkgs.bundler
-
   ];
 
   home.sessionVariables = {

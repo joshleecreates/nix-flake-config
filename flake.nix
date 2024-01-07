@@ -10,17 +10,21 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
     {
       nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
         modules = [ 
           ./configuration.nix
           inputs.home-manager.nixosModules.default
         ];
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      };
+      homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
+        modules = [
+          ./users/josh/home.nix
+        ];
+        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
       };
     };
 }
