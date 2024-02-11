@@ -144,7 +144,7 @@
     '';
   };
   xdg.configFile.nvim = {
-    source = ./config/neovim;
+    source = ./neovim;
     recursive = true;
   };
 }

@@ -5,16 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  # Bootloader
+  imports = [
+    ./hardware-configuration.nix
+    ../../users/josh.nix
+  ];
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "/dev/sda/" ];
 
-  networking.hostName = "nixos-desktop"; # Define your hostname.
+  networking.hostName = "kasti"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Don't ask for sudo password
@@ -41,14 +39,6 @@
   programs.zsh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.josh = {
-    isNormalUser = true;
-    description = "Josh Lee";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.zsh;
-  };
-
-  home-manager.users.josh = import ./users/josh/home.nix;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -72,11 +62,6 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
-
-  users.users.josh.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAg/E2UkXORp58O3zxp0dQird+UcvdJkCpKbZj5+ccmh josh@joshuamlee.com"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqNWMAWBBWiJJK+u2J78H64NLFo4zvQNPg45F3Gv+57 josh@joshuamlee.com"
-  ];
 
   system.stateVersion = "23.11"; # Did you read the comment?
 

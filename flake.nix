@@ -11,14 +11,13 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     {
-      nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [ 
-          ./configuration.nix
+          ./hosts/kasti/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
       };
       homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
         modules = [
@@ -31,7 +30,7 @@
         system = "x86_64-linux";
         modules = [
           ./server-configuration.nix
-        ]
-      }
+        ];
+      };
     };
 }

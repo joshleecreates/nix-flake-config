@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  home.packages = [
+    pkgs.oh-my-zsh
+  ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -8,7 +11,7 @@
     plugins = [
       {
         name = "powerlevel10k-config";
-        src = ./config/zsh;
+        src = ./zsh;
         file = "p10k.zsh";
       }
       {
