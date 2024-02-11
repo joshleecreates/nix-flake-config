@@ -28,6 +28,7 @@
     pkgs.zoxide
     pkgs.fzf
     pkgs.vscode-langservers-extracted
+    pkgs.qutebrowser
   ];
 
   home.sessionVariables = {

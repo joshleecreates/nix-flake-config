@@ -26,5 +26,12 @@
         ];
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";
       };
+      nixosConfigurations.nixos-server = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [
+          ./server-configuration.nix
+        ]
+      }
     };
 }
