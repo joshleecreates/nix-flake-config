@@ -19,6 +19,14 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+      nixosConfigurations.oko = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/oko/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
       homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
         modules = [
           ./users/josh/home.nix
