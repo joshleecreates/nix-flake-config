@@ -19,14 +19,12 @@
   # environment.
   home.packages = [
     pkgs.thefuck
-    pkgs.oh-my-zsh
     pkgs.git
     pkgs.wget
     pkgs.gnumake
     pkgs.ranger
-    pkgs.zoxide
-    pkgs.fzf
     pkgs.vscode-langservers-extracted
+    pkgs.nurl
   ];
 
   home.sessionVariables = {

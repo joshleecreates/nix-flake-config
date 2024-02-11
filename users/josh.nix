@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home-manager.users.josh = import ../homes/josh.nix;
+
+  programs.zsh.enable = true;
+
   users.users.josh = {
     isNormalUser = true;
     description = "Josh Lee";
@@ -13,5 +17,4 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqNWMAWBBWiJJK+u2J78H64NLFo4zvQNPg45F3Gv+57 josh@joshuamlee.com"
   ];
 
-  home-manager.users.josh = import ../homes/josh.nix;
 }

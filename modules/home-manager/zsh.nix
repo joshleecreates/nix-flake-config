@@ -3,6 +3,7 @@
   home.packages = [
     pkgs.oh-my-zsh
   ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

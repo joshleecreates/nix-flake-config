@@ -1,16 +1,5 @@
 { pkgs, ... }:
 let 
-  # tokyo-night-tmux = pkgs.tmuxPlugins.mkTmuxPlugin
-  #   {
-  #     pluginName = "tokyo-night-tmux";
-  #     version = "unstable-2023-12-23";
-  #     src = pkgs.fetchFromGitHub {
-  #       owner = "janoamaral";
-  #       repo = "tokyo-night-tmux";
-  #       rev = "eb759e91085be3446778751341cbd3248705c608";
-  #       hash = "sha256-zGlaPEeRQqd7g9HA9pvf8wSTeXwD4Qh5JzD3nzZkKAQ=";
-  #     };
-  #   };
   t-smart-tmux-session-manager = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "t-smart-tmux-session-manager";
@@ -24,6 +13,11 @@ let
     };
 in
 {
+  home.packages = [
+    pkgs.zoxide
+    pkgs.fzf
+    t-smart-tmux-session-manager.src
+  ];
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
@@ -130,8 +124,4 @@ in
       bind-key x kill-pane
     '';
   };
-
-  home.packages = [
-    t-smart-tmux-session-manager.src
-  ];
 }

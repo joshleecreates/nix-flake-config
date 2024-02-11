@@ -7,70 +7,27 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../common/grub.nix
+    ../common/i18n.nix
+    ../common/security.nix
+    ../../modules/ssh.nix
+    ../../modules/tailscale.nix
     ../../users/josh.nix
   ];
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "/dev/sda/" ];
-
-  networking.hostName = "kasti"; # Define your hostname.
-  networking.networkmanager.enable = true;
-
-  # Don't ask for sudo password
-  security.sudo.wheelNeedsPassword = false;
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  programs.zsh.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Allow experimental features
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    tailscale
-    home-manager
-    nurl
-  ];
-
-  virtualisation.docker.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-  };
 
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  # Enable QEMU Guest Service
+  networking.hostName = "kasti"; # Define your hostname.
+  networking.networkmanager.enable = true;
+  nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  virtualisation.docker.enable = true;
   services.qemuGuest.enable = true;
 
-  # Enable Tailscale
-  services.tailscale.enable = true;
+  environment.systemPackages = with pkgs; [
+    vim 
+    home-manager 
+  ];
 
-  programs.ssh.startAgent = true;
 }
 
