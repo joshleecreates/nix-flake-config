@@ -6,11 +6,11 @@
     port = 9001;
   };
 
-  services.grafana = {
-    enable = true;
+  services.grafana.enable = true;
+  services.grafana.settings.server = {
     domain = "grafana.home.arpa";
-    port = 2342;
-    addr = "127.0.0.1";
+    http_port = 2342;
+    http_addr = "127.0.0.1";
   };
 
   services.prometheus = {
@@ -29,7 +29,7 @@
         }];
       }
     ];
-  }
+  };
 
   # nginx reverse proxy
   services.nginx.virtualHosts.${config.services.grafana.domain} = {
@@ -37,5 +37,5 @@
         proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
         proxyWebsockets = true;
     };
-  }
+  };
 }
