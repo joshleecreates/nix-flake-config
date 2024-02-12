@@ -8,18 +8,18 @@
     ../common/security.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
+    ../../modules/prometheus.nix
     ../../users/kasti.nix
   ];
 
   networking.hostName = "oko";
   networking.networkmanager.enable = true;
-  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  virtualisation.docker.enable = true;
   services.qemuGuest.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim 
+    git
   ];
 
   system.stateVersion = "23.11";

@@ -21,6 +21,7 @@
   environment.systemPackages = with pkgs; [
     vim 
     home-manager 
+    git
   ];
 
   system.stateVersion = "23.11";
