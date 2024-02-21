@@ -17,6 +17,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   services.qemuGuest.enable = true;
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 80 443 2342 9001 9002 ];
+  };
+
   environment.systemPackages = with pkgs; [
     vim 
     git
