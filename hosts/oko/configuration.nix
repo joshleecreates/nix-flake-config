@@ -3,9 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common/grub.nix
-    ../common/i18n.nix
-    ../common/security.nix
+    ../vm/configuration.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
     ../../modules/prometheus.nix
@@ -15,7 +13,6 @@
   networking.hostName = "oko";
   networking.networkmanager.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  services.qemuGuest.enable = true;
 
   networking.firewall = {
     enable = true;

@@ -3,7 +3,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common/grub.nix
     ../common/i18n.nix
     ../common/security.nix
     ../../modules/ssh.nix
@@ -23,6 +22,9 @@
     home-manager 
     git
   ];
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = [ "/dev/sda/" ];
 
   system.stateVersion = "23.11";
 }

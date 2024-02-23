@@ -16,15 +16,13 @@
   outputs = { self, nixpkgs, nixos-generators, ... }@inputs:
     {
       packages.x86_64-linux = {
-        okvir-iso = nixos-generators.nixosGenerate {
+        vm = nixos-generators.nixosGenerate {
           system = "x86_64-linux";
           modules = [
-            ./hosts/okvir/configuration.nix
+            ./hosts/vm/configuration.nix
+            ./hosts/vm/iso.nix
           ];
           format = "proxmox";
-          # proxmox.qemuConf = {
-          #   bios = "ovmf";
-          # };
         };
       };
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
@@ -47,7 +45,6 @@
         system = "x86_64-linux";
         modules = [ 
           ./hosts/okvir/configuration.nix
-          ./hosts/okvir/hardware-configuration.nix
         ];
       };
       homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
