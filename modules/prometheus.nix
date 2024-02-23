@@ -23,9 +23,12 @@
     };
     scrapeConfigs = [
       {
-        job_name = "oko";
+        job_name = "vms";
         static_configs = [{
-          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
+          targets = [ 
+            "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
+            "192.168.0.101:9002"
+          ];
         }];
       }
       {

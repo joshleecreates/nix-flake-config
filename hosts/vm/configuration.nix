@@ -5,6 +5,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     ../common/i18n.nix
     ../common/security.nix
+    ../../modules/ssh.nix
   ];
 
   services.qemuGuest.enable = true;

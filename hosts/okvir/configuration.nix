@@ -5,6 +5,7 @@
     ../vm/configuration.nix
     ../vm/hardware-configuration.nix
     ../common/nodhcp.nix
+    ../../modules/node-exporter.nix
     ../../users/kasti.nix
   ];
 
