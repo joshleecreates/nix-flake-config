@@ -9,9 +9,9 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [
-    ./neovim.nix
-    ./tmux.nix
-    ./zsh.nix
+    ../modules/home-manager/neovim.nix
+    ../modules/home-manager/tmux.nix
+    ../modules/home-manager/zsh.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -28,7 +28,7 @@
     pkgs.zoxide
     pkgs.fzf
     pkgs.vscode-langservers-extracted
-    pkgs.qutebrowser
+    # pkgs.qutebrowser
   ];
 
   home.sessionVariables = {

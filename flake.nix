@@ -49,7 +49,7 @@
       };
       homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
         modules = [
-          ./users/josh/home.nix
+          ./homes/joshlee.nix
         ];
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";
       };
