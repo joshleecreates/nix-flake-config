@@ -7,6 +7,7 @@
     ../common/security.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
+    ../../modules/node-exporter.nix
     ../../users/josh.nix
   ];
 

@@ -13,9 +13,6 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
 
-  swapDevices = [
-    { device = "/swapfile"; size = 1024; } # Size in MB
-  ];
 
   nix.settings.trusted-users = [ "root" "@wheel" ];
 

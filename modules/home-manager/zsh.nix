@@ -27,8 +27,8 @@
     };
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
       ta = "tmux attach";
+      n = "nvim .";
     };
     initExtra = ''
       eval "$(zoxide init zsh)"

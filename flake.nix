@@ -40,6 +40,13 @@
           ./hosts/oko/configuration.nix
         ];
       };
+      nixosConfigurations.pihole = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/pihole/pihole.nix
+        ];
+      };
       nixosConfigurations.okvir = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
