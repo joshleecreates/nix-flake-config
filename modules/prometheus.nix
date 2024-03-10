@@ -8,9 +8,9 @@
 
   services.grafana.enable = true;
   services.grafana.settings.server = {
-    domain = "grafana.home.arpa";
+    domain = "grafana.kasti.me";
     http_port = 2342;
-    http_addr = "0.0.0.0";
+    http_addr = "127.0.0.1";
   };
 
   services.prometheus = {
@@ -27,7 +27,7 @@
         static_configs = [{
           targets = [ 
             "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
-            "192.168.0.101:9002"
+            "pihole:9002"
           ];
         }];
       }
@@ -41,9 +41,9 @@
   };
 
   # nginx reverse proxy
-  services.nginx.virtualHosts.${config.services.grafana.domain} = {
+  services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
     locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
+        proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
         proxyWebsockets = true;
     };
   };

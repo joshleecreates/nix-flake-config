@@ -8,13 +8,12 @@
     ../common/swap.nix
     ../../modules/node-exporter.nix
     # ../../modules/portainer.nix
-    ../../modules/pihole.nix
     ../../users/kasti.nix
   ];
 
   networking.hostName = "okvir";
   networking.interfaces.eth0.ipv4.addresses = [ {
-    address = "192.168.0.101";
+    address = "192.168.0.102";
     prefixLength = 24;
   } ];
 

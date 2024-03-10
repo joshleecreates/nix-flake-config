@@ -5,13 +5,17 @@
     ./hardware-configuration.nix
     ../vm/configuration.nix
     ../../modules/ssh.nix
+    ../common/nodhcp.nix
     ../../modules/tailscale.nix
     ../../modules/prometheus.nix
     ../../users/kasti.nix
   ];
 
   networking.hostName = "oko";
-  networking.networkmanager.enable = true;
+  networking.interfaces.eth0.ipv4.addresses = [ {
+    address = "192.168.0.101";
+    prefixLength = 24;
+  } ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.firewall = {
@@ -23,6 +27,8 @@
     vim 
     git
   ];
+
+  services.nginx.enable = true;
 
   system.stateVersion = "23.11";
 }

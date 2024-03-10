@@ -24,6 +24,10 @@
         "/var/lib/pihole/:/etc/pihole/"
         "/var/lib/dnsmasq.d:/etc/dnsmasq.d/"
       ];
+      environment = {
+        TZ = "America/New_York";
+      };
+      autoStart = true;
     };
   };
 }
