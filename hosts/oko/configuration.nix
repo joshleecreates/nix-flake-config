@@ -30,6 +30,20 @@
 
   services.nginx.enable = true;
 
+  services.nginx.virtualHosts."pihole.kasti.me" = {
+    locations."/" = {
+        proxyPass = "http://192.168.0.100:80";
+        proxyWebsockets = true;
+    };
+  };
+
+  services.nginx.virtualHosts."truenas.kasti.me" = {
+    locations."/" = {
+        proxyPass = "http://192.168.0.98:80";
+        proxyWebsockets = true;
+    };
+  };
+
   system.stateVersion = "23.11";
 }
 

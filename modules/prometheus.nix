@@ -10,7 +10,7 @@
   services.grafana.settings.server = {
     domain = "grafana.kasti.me";
     http_port = 2342;
-    http_addr = "127.0.0.1";
+    http_addr = "0.0.0.0";
   };
 
   services.prometheus = {
@@ -45,6 +45,9 @@
     locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
         proxyWebsockets = true;
+        extraConfig = 
+          "proxy_set_header Host grafana.kasti.me;" 
+        ;
     };
   };
 }
