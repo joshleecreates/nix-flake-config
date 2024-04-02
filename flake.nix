@@ -53,5 +53,11 @@
         ];
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";
       };
+      homeConfigurations."josh@pop-os" = inputs.home-manager.lib.homeManagerConfiguration {
+        modules = [
+          ./homes/josh.nix
+        ];
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      };
     };
 }

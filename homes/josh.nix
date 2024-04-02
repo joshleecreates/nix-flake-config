@@ -38,4 +38,6 @@
   programs.htop = {
     enable = true;
   };
+
+  program.zsh.enable = true;
 }
