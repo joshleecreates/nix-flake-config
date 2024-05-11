@@ -34,7 +34,7 @@
       {
         job_name = "r7";
         static_configs = [{
-          targets = [ "192.168.0.99:9100" ];
+          targets = [ "192.168.0.11:9100" ];
         }];
       }
     ];
