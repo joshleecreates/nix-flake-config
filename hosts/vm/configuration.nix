@@ -10,6 +10,7 @@
 
   services.qemuGuest.enable = true;
   services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
