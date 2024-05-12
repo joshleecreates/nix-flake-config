@@ -46,7 +46,7 @@
 
   services.nginx.virtualHosts."proxmox.kasti.me" = {
     locations."/" = {
-      proxyPass = "http://192.168.0.11:8006";
+      proxyPass = "https://192.168.0.11:8006";
       proxyWebsockets = true;
     };
   };
