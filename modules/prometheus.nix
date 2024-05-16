@@ -21,6 +21,9 @@
         port = 9002;
       };
     };
+    globalConfig = {
+      scrape_timeout = "30s";
+    };
     scrapeConfigs = [
       {
         job_name = "vms";
@@ -28,6 +31,7 @@
           targets = [ 
             "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
             "pihole:9002"
+            "kasti:9002"
           ];
         }];
       }
