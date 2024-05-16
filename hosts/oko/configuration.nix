@@ -68,6 +68,13 @@
     };
   };
 
+  services.nginx.virtualHosts."prometheus.kasti.me" = {
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:9001";
+      proxyWebsockets = true;
+    };
+  };
+
   system.stateVersion = "23.11";
 }
 
