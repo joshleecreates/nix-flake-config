@@ -4,14 +4,13 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "joshlee";
-  home.homeDirectory = "/Users/joshlee";
+  home.homeDirectory = lib.mkForce "/Users/joshlee";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [
     ../modules/home-manager/neovim.nix
     ../modules/home-manager/tmux.nix
-    ../modules/home-manager/git.nix
     ../modules/home-manager/zsh.nix
   ];
 
@@ -29,6 +28,7 @@
     pkgs.zoxide
     pkgs.fzf
     pkgs.vscode-langservers-extracted
+    pkgs.gh
     # pkgs.qutebrowser
   ];
 

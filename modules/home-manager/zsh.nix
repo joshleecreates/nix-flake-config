@@ -8,7 +8,7 @@
     enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-    syntaxHighlighting.enable = true;
+#    syntaxHighlighting.enable = true;
     plugins = [
       {
         name = "powerlevel10k-config";
