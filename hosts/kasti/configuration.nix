@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ../vm/configuration.nix
+    ../vm/hardware-configuration.nix
     ../common/i18n.nix
     ../common/security.nix
     ../../modules/ssh.nix
@@ -13,21 +14,20 @@
 
   networking.hostName = "kasti";
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   virtualisation.docker.enable = true;
   services.qemuGuest.enable = true;
-  boot.growPartition = true;
+
+  nix.settings.trusted-users = [ "root" "@wheel" ];
 
   environment.systemPackages = with pkgs; [
-    vim 
     home-manager 
     git
   ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "/dev/sda/" ];
-
+  boot.growPartition = true;
   system.stateVersion = "23.11";
 }
 
