@@ -54,11 +54,18 @@
           ./hosts/db-primary.nix
         ];
       };
-      nixosConfigurations.bedrock-monitor = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.monitoring = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [ 
-          ./hosts/bedrock-monitor/configuration.nix
+          ./hosts/monitoring.nix
+        ];
+      };
+      nixosConfigurations.ingress = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/ingress.nix
         ];
       };
       nixosConfigurations.lab-docker = nixpkgs.lib.nixosSystem {
