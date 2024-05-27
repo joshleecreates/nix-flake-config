@@ -22,7 +22,8 @@
       };
     };
     globalConfig = {
-      scrape_timeout = "30s";
+      scrape_timeout = "25s";
+      scrape_interval = "30s";
     };
     scrapeConfigs = [
       {
@@ -31,7 +32,7 @@
           targets = [ 
             "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
             "pihole:9002"
-            "kasti:9002"
+            "kasti.local:9002"
           ];
         }];
       }

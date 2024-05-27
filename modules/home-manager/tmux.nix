@@ -68,8 +68,8 @@ in
       bind -n M-Down select-pane -D
 
       # shift arrow to switch windows
-      bind -n S-Left  previous-window
-      bind -n S-Right next-window
+      bind-key -r i previous-window
+      bind-key -r o next-window
 
       # resizing panes
       bind-key -r j resize-pane -D 5
@@ -125,7 +125,7 @@ in
       set -sg escape-time 10
 
       # dont ask to kill pane
-      bind-key x kill-pane
+      # bind-key x kill-pane
     '';
   };
 }

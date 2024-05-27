@@ -25,7 +25,8 @@
 
   environment.systemPackages = with pkgs; [
     vim 
-    git
+    git # just in case
+    python3 # required for ansible
   ];
 
   services.nginx.enable = true;

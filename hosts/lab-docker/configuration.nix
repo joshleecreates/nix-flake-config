@@ -9,7 +9,7 @@
     ../../users/kasti.nix
   ];
 
-  networking.hostName = "docker-lab";
+  networking.hostName = "lab-docker";
 
   networking.firewall = {
     enable = false;

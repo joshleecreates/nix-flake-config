@@ -1,14 +1,12 @@
-{ config, pkgs, ... }:
+# pihole.nix
+
+{ ... }:
 
 {
   imports = [
-    ../vm/configuration.nix
-    ../vm/hardware-configuration.nix
-    ../common/swap.nix
-    ../../modules/node-exporter.nix
+    ../templates/server.nix
     ../../modules/pihole.nix
     ../../modules/tailscale.nix
-    ../../users/kasti.nix
   ];
 
   networking.hostName = "pihole";
@@ -25,9 +23,6 @@
   networking.firewall = {
     enable = false;
   };
-
-  environment.systemPackages = with pkgs; [
-  ];
 
   system.stateVersion = "23.11";
 }

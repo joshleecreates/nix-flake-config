@@ -40,5 +40,11 @@
     enable = true;
   };
 
+  programs.ssh.matchBlocks = {
+    "new-vm.local" = {
+      checkHostIP = false;
+    };
+  };
+
   programs.zsh.enable = true;
 }

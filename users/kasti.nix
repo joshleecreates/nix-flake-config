@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
+  security.sudo.wheelNeedsPassword = false;
+
   users.users.kasti = {
     isNormalUser = true;
     description = "Kasti Service Account";

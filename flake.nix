@@ -47,11 +47,25 @@
           ./hosts/pihole/pihole.nix
         ];
       };
-      nixosConfigurations.okvir = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.db-primary = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [ 
-          ./hosts/okvir/configuration.nix
+          ./hosts/db-primary.nix
+        ];
+      };
+      nixosConfigurations.bedrock-monitor = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/bedrock-monitor/configuration.nix
+        ];
+      };
+      nixosConfigurations.lab-docker = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/lab-docker/configuration.nix
         ];
       };
       homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
