@@ -26,6 +26,7 @@
       ];
       environment = {
         TZ = "America/New_York";
+        VIRTUAL_HOST = "pihole.kasti.me";
       };
       autoStart = true;
     };
