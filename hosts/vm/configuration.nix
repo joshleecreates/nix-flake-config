@@ -14,7 +14,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
 
-  # Allow remote updates with nix-flake and non-root users
+  # Allow remote updates with flakes and non-root users
   nix.settings.trusted-users = [ "root" "@wheel" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
