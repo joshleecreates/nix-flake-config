@@ -7,24 +7,10 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, nixos-generators, ... }@inputs:
     {
-      packages.x86_64-linux = {
-        vm = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/vm/configuration.nix
-            ./hosts/vm/iso.nix
-          ];
-          format = "proxmox";
-        };
-      };
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
@@ -38,34 +24,6 @@
         system = "x86_64-linux";
         modules = [ 
           ./hosts/oko/configuration.nix
-        ];
-      };
-      nixosConfigurations.pihole = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/pihole/pihole.nix
-        ];
-      };
-      nixosConfigurations.db-primary = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/db-primary.nix
-        ];
-      };
-      nixosConfigurations.monitoring = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/monitoring.nix
-        ];
-      };
-      nixosConfigurations.ingress = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/ingress.nix
         ];
       };
       nixosConfigurations.lab-docker = nixpkgs.lib.nixosSystem {

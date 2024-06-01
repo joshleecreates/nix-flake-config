@@ -40,6 +40,7 @@
     enable = true;
   };
 
+  programs.ssh.enable = true;
   programs.ssh.matchBlocks = {
     "new-vm.local" = {
       checkHostIP = false;

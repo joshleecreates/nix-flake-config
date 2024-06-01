@@ -49,6 +49,7 @@ in
           set -g @dracula-git-show-remote-status true
           set -g @dracula-plugins "time cpu-usage"
           set -g @dracula-show-left-icon session
+          set -g @dracula-show-left-icon session
         '';
       }
       {
