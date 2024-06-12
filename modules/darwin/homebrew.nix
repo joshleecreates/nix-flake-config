@@ -11,6 +11,7 @@
     # };
     brews = [
       "sniffnet" # monitor network traffic
+      "sketchybar"
     ];
     casks = [
       # utilities
@@ -18,7 +19,6 @@
       "meetingbar" # shows upcoming meetings
       # "skhd"
       # "yabai"
-      # "sketchybar"
       "font-hack-nerd-font" #fors sketchy bar
 
       # virtualization

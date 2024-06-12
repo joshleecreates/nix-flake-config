@@ -21,6 +21,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-services = {
+      url = "github:homebrew/homebrew-services";
+      flake = false;
+    };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
       flake = false;
@@ -31,7 +35,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, homebrew-felixkratz, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, homebrew-services, homebrew-felixkratz, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
     {
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -65,8 +69,9 @@
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-services" = homebrew-services;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "felixkratz/homebrew-formulae" = homebrew-felixkratz;
+                  "felixkratz/hombrew-formulae" = homebrew-felixkratz;
                 };
                 mutableTaps = true;
                 autoMigrate = true;
