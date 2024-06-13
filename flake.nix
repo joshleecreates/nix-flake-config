@@ -36,6 +36,13 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, homebrew-services, homebrew-felixkratz, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
+    let 
+      homebrew-services-patched = nixpkgs.legacyPackages.aarch64-darwin.applyPatches {
+        name = "homebrew-services-patched";
+        src = homebrew-services;
+        patches = [./modules/darwin/homebrew-services.patch];
+      };
+    in
     {
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -69,12 +76,12 @@
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-services" = homebrew-services;
+                  "homebrew/homebrew-services" = homebrew-services-patched;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "felixkratz/hombrew-formulae" = homebrew-felixkratz;
+                  "felixkratz/homebrew-formulae" = homebrew-felixkratz;
                 };
                 mutableTaps = true;
-                autoMigrate = true;
+                autoMigrate = false;
               };
             }
           ./hosts/macbook/configuration.nix

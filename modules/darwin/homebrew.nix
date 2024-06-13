@@ -1,7 +1,7 @@
-{ ... }: {
+{ config, ... }: {
   homebrew = {
     enable = true;
-    global = { autoUpdate = false; };
+    # global = { autoUpdate = false; };
     # will not be uninstalled when removed
     # onActivation = {
     #   # "zap" removes manually installed brews and casks
@@ -16,32 +16,26 @@
     casks = [
       # utilities
       # "hiddenbar" # hides menu bar icons
-      "meetingbar" # shows upcoming meetings
+      # "meetingbar" # shows upcoming meetings
       # "skhd"
       # "yabai"
-      "font-hack-nerd-font" #fors sketchy bar
-
+      # "font-hack-nerd-font" #fors sketchy bar
       # virtualization
       # "utm" # virtual machines
 
       # communication
-      "zoom"
+      # "zoom"
       # "slack"
       # "discord"
       
       # "bitwarden" # password manager
       # "spotify" # music
       # "obs" # stream / recoding software
-      "eul" # mac monitoring
-      "wireshark" # network sniffer
+      # "eul" # mac monitoring
+      # "wireshark" # network sniffer
       # "obsidian" # zettelkasten
     ];
-    taps = [
-      # default
-      "homebrew/bundle"
-      "homebrew/services"
-      # custom
-      "FelixKratz/formulae" # borders
-    ];
+    
+    taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);
   };
 }
