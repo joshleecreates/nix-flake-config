@@ -1,40 +1,38 @@
 { config, ... }: {
   homebrew = {
     enable = true;
-    # global = { autoUpdate = false; };
-    # will not be uninstalled when removed
-    # onActivation = {
-    #   # "zap" removes manually installed brews and casks
-    #   cleanup = "zap";
-    #   autoUpdate = false;
-    #   upgrade = false;
-    # };
     brews = [
       "sniffnet" # monitor network traffic
       "sketchybar"
     ];
     casks = [
       # utilities
-      # "hiddenbar" # hides menu bar icons
       "meetingbar" # shows upcoming meetings
-      # "skhd"
-      # "yabai"
-      # "font-hack-nerd-font" #fors sketchy bar
+      "font-hack-nerd-font" #fors sketchy bar
+
       # virtualization
-      # "utm" # virtual machines
+      "utm" # virtual machines
 
       # communication
-      # "zoom"
-      # "slack"
-      # "discord"
+      "zoom"
+      "slack"
+      "discord"
       
       "arc"
-      # "bitwarden" # password manager
-      # "spotify" # music
-      # "obs" # stream / recoding software
-      # "eul" # mac monitoring
-      # "wireshark" # network sniffer
-      # "obsidian" # zettelkasten
+      "1password" # password manager
+      "spotify" # music
+      "obs" # stream / recoding software
+      "eul" # mac monitoring
+      "wireshark" # network sniffer
+      "obsidian" # zettelkasten
+      "firefox"
+      "iterm2"
+      "amethyst"
+      "visual-studio-code"
+      "docker"
+      "spacelauncher"
+      "ubersicht"
+      "syncthing"
     ];
     
     taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);

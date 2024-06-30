@@ -30,7 +30,7 @@
     pkgs.vscode-langservers-extracted
     pkgs.gh
     pkgs.opentofu
-    # pkgs.qutebrowser
+    pkgs.yabai
   ];
 
   home.sessionVariables = {
