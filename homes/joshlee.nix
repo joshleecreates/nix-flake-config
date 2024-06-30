@@ -12,6 +12,7 @@
     ../modules/home-manager/neovim.nix
     ../modules/home-manager/tmux.nix
     ../modules/home-manager/zsh.nix
+    ../modules/home-manager/git.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -43,5 +44,11 @@
 
   programs.htop = {
     enable = true;
+  };
+
+  programs.zsh = {
+    initExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
   };
 }
