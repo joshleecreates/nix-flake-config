@@ -16,7 +16,7 @@
     casks = [
       # utilities
       # "hiddenbar" # hides menu bar icons
-      # "meetingbar" # shows upcoming meetings
+      "meetingbar" # shows upcoming meetings
       # "skhd"
       # "yabai"
       # "font-hack-nerd-font" #fors sketchy bar
@@ -28,6 +28,7 @@
       # "slack"
       # "discord"
       
+      "arc"
       # "bitwarden" # password manager
       # "spotify" # music
       # "obs" # stream / recoding software

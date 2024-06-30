@@ -1,29 +1,15 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.oh-my-zsh
   ];
 
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-#    syntaxHighlighting.enable = true;
-    plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = ./zsh;
-        file = "p10k.zsh";
-      }
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
+      theme = "bira";
     };
     shellAliases = {
       ll = "ls -l";
@@ -32,6 +18,9 @@
     };
     initExtra = ''
       eval "$(zoxide init zsh)"
+      autoload bashcompinit && bashcompinit
+      autoload -Uz compinit && compinit
+      complete -C '/usr/local/bin/aws_completer' aws
     '';
   };
 }

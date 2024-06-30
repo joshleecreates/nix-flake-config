@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "joshlee";
-  home.homeDirectory = lib.mkForce "/Users/joshlee";
+  home.username = "josh";
+  home.homeDirectory = lib.mkForce "/Users/josh";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
@@ -29,6 +29,7 @@
     pkgs.fzf
     pkgs.vscode-langservers-extracted
     pkgs.gh
+    pkgs.opentofu
     # pkgs.qutebrowser
   ];
 

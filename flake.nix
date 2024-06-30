@@ -52,7 +52,7 @@
           inputs.home-manager.nixosModules.default
         ];
       };
-      homeConfigurations."joshlee@sting" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."josh@silver" = home-manager.lib.homeManagerConfiguration {
         modules = [
           ./homes/joshlee.nix
         ];
@@ -71,7 +71,7 @@
           inputs.nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
-                user = "joshlee";
+                user = "josh";
                 enable = true;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
