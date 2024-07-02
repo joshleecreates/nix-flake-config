@@ -13,6 +13,7 @@
     ../modules/home-manager/tmux.nix
     ../modules/home-manager/zsh.nix
     ../modules/home-manager/git.nix
+    ../modules/home-manager/k9s.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -31,7 +32,9 @@
     pkgs.vscode-langservers-extracted
     pkgs.gh
     pkgs.opentofu
-    pkgs.yabai
+    pkgs.awscli2
+    pkgs.kubectl
+    pkgs.kubectx
   ];
 
   home.sessionVariables = {

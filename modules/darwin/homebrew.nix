@@ -4,6 +4,7 @@
     brews = [
       "sniffnet" # monitor network traffic
       "sketchybar"
+      "helm"
     ];
     casks = [
       # utilities

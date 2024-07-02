@@ -18,9 +18,9 @@
     };
     initExtra = ''
       eval "$(zoxide init zsh)"
-      autoload bashcompinit && bashcompinit
-      autoload -Uz compinit && compinit
-      complete -C '/usr/local/bin/aws_completer' aws
+
+      # aws cli auto complete
+      complete -C '${pkgs.awscli}/bin/aws_completer' aws
     '';
   };
 }
