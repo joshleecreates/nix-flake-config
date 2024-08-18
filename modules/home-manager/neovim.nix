@@ -47,10 +47,10 @@
       ansible-vim
       vim-nix
       {
-        plugin = tokyonight-nvim;
+        plugin = gruvbox;
         type = "lua";
         config = ''
-          vim.cmd[[colorscheme tokyonight-night]]
+          vim.cmd[[colorscheme gruvbox]]
         '';
       }
       {

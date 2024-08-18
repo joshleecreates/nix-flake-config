@@ -69,8 +69,8 @@ in
       bind -n M-Down select-pane -D
 
       # shift arrow to switch windows
-      bind-key -r i previous-window
-      bind-key -r o next-window
+      bind-key -r b previous-window
+      bind-key -r n next-window
 
       # resizing panes
       bind-key -r j resize-pane -D 5

@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-generators, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     {
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};

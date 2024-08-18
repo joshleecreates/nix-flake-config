@@ -6,7 +6,7 @@
     ../vm/hardware-configuration.nix
     ../common/i18n.nix
     ../common/security.nix
-    ../../modules/ssh.nix
+    ../common/ssh.nix
     ../../modules/tailscale.nix
     ../../modules/node-exporter.nix
     ../../users/josh.nix

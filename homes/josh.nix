@@ -26,6 +26,11 @@
     pkgs.ranger
     pkgs.vscode-langservers-extracted
     pkgs.nurl
+    pkgs.btop
+    pkgs.dnsutils
+    pkgs.kubectl
+    pkgs.kubectx
+    pkgs.opentofu
   ];
 
   home.sessionVariables = {
@@ -47,5 +52,12 @@
     };
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
+      theme = "gallifrey";
+    };
+  };
 }
