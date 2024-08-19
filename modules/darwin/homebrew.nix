@@ -5,6 +5,9 @@
       "sniffnet" # monitor network traffic
       "sketchybar"
       "helm"
+      "terraform"
+      "doctl"
+      "helm-docs"
     ];
     casks = [
       # utilities
@@ -34,6 +37,14 @@
       "spacelauncher"
       "ubersicht"
       "syncthing"
+
+      # from recomendations
+      # https://x.com/steventey/status/1800203408215027757
+      "raycast"
+      "cleanshot"
+      "mimestream"
+      "screenflow"
+      "tableplus"
     ];
     
     taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);

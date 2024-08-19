@@ -141,6 +141,22 @@
         "type": "github"
       }
     },
+    "homebrew-norwoodj": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720433735,
+        "narHash": "sha256-0UsmfmmbyHKb96Uxbo7XDuwkn0XWbnTJsIOqmluRNgY=",
+        "owner": "norwoodj",
+        "repo": "homebrew-tap",
+        "rev": "7acbc60c7124d52ac872c8e0bfb10e2cd9737dc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "norwoodj",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "homebrew-services": {
       "flake": false,
       "locked": {
@@ -249,6 +265,7 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-felixkratz": "homebrew-felixkratz",
+        "homebrew-norwoodj": "homebrew-norwoodj",
         "homebrew-services": "homebrew-services",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3"

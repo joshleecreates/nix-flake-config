@@ -9,12 +9,14 @@
     dotDir = ".config/zsh";
     oh-my-zsh = {
       enable = true;
-      theme = "bira";
+      theme = "robbyrussell";
+      plugins = ["kubectl" "kubectx" "git" "aws"];
     };
     shellAliases = {
       ll = "ls -l";
       ta = "tmux attach";
       n = "nvim .";
+      k = "kubectl";
     };
     initExtra = ''
       eval "$(zoxide init zsh)"

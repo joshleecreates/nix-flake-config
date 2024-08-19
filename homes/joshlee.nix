@@ -35,6 +35,8 @@
     pkgs.awscli2
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.talosctl
+    pkgs.argocd
   ];
 
   home.sessionVariables = {
