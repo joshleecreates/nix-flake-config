@@ -57,7 +57,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
-      theme = "gallifrey";
+      theme = "bira";
     };
   };
 }

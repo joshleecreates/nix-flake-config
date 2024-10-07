@@ -16,6 +16,8 @@
     };
     initExtra = ''
       eval "$(zoxide init zsh)"
+
+      DISABLE_AUTO_TITLE="true"
     '';
   };
 }
