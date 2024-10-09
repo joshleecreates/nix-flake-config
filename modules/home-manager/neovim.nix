@@ -47,10 +47,10 @@
       ansible-vim
       vim-nix
       {
-        plugin = tokyonight-nvim;
+        plugin = nord-nvim;
         type = "lua";
         config = ''
-          vim.cmd[[colorscheme tokyonight-night]]
+          vim.cmd[[colorscheme nord]]
         '';
       }
       {

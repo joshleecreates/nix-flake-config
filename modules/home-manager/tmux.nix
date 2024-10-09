@@ -29,7 +29,6 @@ in
       yank
       t-smart-tmux-session-manager
       nord
-      # tokyo-night-tmux
       {
         plugin = continuum;
         extraConfig = ''
@@ -40,6 +39,7 @@ in
     extraConfig = ''
       set -g default-terminal "screen-256color"
 
+      set-option -g status-left-length 40
       # switch panes using Alt-arrow without prefix
       bind -n M-Left select-pane -L
       bind -n M-Right select-pane -R
