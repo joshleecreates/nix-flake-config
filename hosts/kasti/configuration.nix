@@ -12,6 +12,8 @@
     ../../users/josh.nix
   ];
 
+  nix.settings.trusted-substituters = [ "https://cache.flox.dev" ];
+  nix.settings.trusted-public-keys = [ "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" ];
   networking.hostName = "kasti";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;

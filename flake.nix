@@ -2,9 +2,9 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -17,20 +17,6 @@
         modules = [ 
           ./hosts/kasti/configuration.nix
           inputs.home-manager.nixosModules.default
-        ];
-      };
-      nixosConfigurations.oko = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/oko/configuration.nix
-        ];
-      };
-      nixosConfigurations.lab-docker = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/lab-docker/configuration.nix
         ];
       };
       homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
