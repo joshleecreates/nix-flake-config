@@ -47,10 +47,17 @@
       ansible-vim
       vim-nix
       {
+<<<<<<< HEAD
         plugin = gruvbox;
         type = "lua";
         config = ''
           vim.cmd[[colorscheme gruvbox]]
+=======
+        plugin = nord-nvim;
+        type = "lua";
+        config = ''
+          vim.cmd[[colorscheme nord]]
+>>>>>>> origin/darwin
         '';
       }
       {

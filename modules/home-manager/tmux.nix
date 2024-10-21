@@ -28,30 +28,7 @@ in
     plugins = with pkgs.tmuxPlugins; [
       yank
       t-smart-tmux-session-manager
-      # tokyo-night-tmux
-      {
-        plugin = resurrect;
-        extraConfig = ''
-          set -g @resurrect-strategy-nvim 'session'
-          resurrect_dir="$HOME/.tmux/resurrect"
-          set -g @resurrect-dir $resurrect_dir
-          set -g @resurrect-capture-pane-contents 'on'
-          set -g @resurrect-hook-post-save-all "sed 's/--cmd[^ ]* [^ ]* [^ ]*//g' $resurrect_dir/last | sponge $resurrect_dir/last"
-          set -g @resurrect-processes '"~nvim"'
-        '';
-      }
-      {
-        plugin = dracula;
-        extraConfig = ''
-          set -g @dracula-show-battery false
-          set -g @dracula-show-powerline true
-          set -g @dracula-refresh-rate 10
-          set -g @dracula-git-show-remote-status true
-          set -g @dracula-plugins "time cpu-usage"
-          set -g @dracula-show-left-icon session
-          set -g @dracula-show-left-icon session
-        '';
-      }
+      nord
       {
         plugin = continuum;
         extraConfig = ''
@@ -62,6 +39,7 @@ in
     extraConfig = ''
       set -g default-terminal "screen-256color"
 
+      set-option -g status-left-length 40
       # switch panes using Alt-arrow without prefix
       bind -n M-Left select-pane -L
       bind -n M-Right select-pane -R
