@@ -1,36 +1,22 @@
-{ config, pkgs, ... }:
+{ self, inputs, ... }:
 
 {
   imports = [
-    ../vm/configuration.nix
-    ../vm/hardware-configuration.nix
-    ../common/i18n.nix
-    ../common/security.nix
-    ../common/ssh.nix
-    ../../modules/tailscale.nix
-    ../../modules/node-exporter.nix
-    ../../users/josh.nix
+    "${self}/templates/workstation.nix"
+    "${inputs.my-modules}/profiles/vm.nix"
+    "${self}/users/josh.nix"
+    ../../common/locale.nix
   ];
+
+  home-manager.users.josh = {
+    imports = [ "${self}/homes/josh.nix" ];
+
+    home.stateVersion = "23.11";
+  };
 
   nix.settings.trusted-substituters = [ "https://cache.flox.dev" ];
   nix.settings.trusted-public-keys = [ "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" ];
   networking.hostName = "kasti";
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  virtualisation.docker.enable = true;
-  services.qemuGuest.enable = true;
-
-  nix.settings.trusted-users = [ "root" "@wheel" ];
-
-  environment.systemPackages = with pkgs; [
-    home-manager 
-    git
-    python3
-  ];
-
-  boot.growPartition = true;
   system.stateVersion = "23.11";
 }
 

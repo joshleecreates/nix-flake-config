@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    my-modules = {
+      url = "git+file:../nix-modules";
+      flake = false;
+    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,10 +43,7 @@
     };
   };
 
-<<<<<<< HEAD
-  outputs = { self, nixpkgs, ... }@inputs:
-=======
-  outputs = { self, nixpkgs, home-manager, darwin, homebrew-services, homebrew-felixkratz, homebrew-norwoodj, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, my-modules, homebrew-services, homebrew-felixkratz, homebrew-norwoodj, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
     let 
       homebrew-services-patched = nixpkgs.legacyPackages.aarch64-darwin.applyPatches {
         name = "homebrew-services-patched";
@@ -50,21 +51,17 @@
         patches = [./modules/darwin/homebrew-services.patch];
       };
     in
->>>>>>> origin/darwin
     {
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [ 
-          ./hosts/kasti/configuration.nix
+          (import "${my-modules}/modules/default.nix")
+          (import ./hosts/kasti/configuration.nix { inherit self; inherit inputs; })
           inputs.home-manager.nixosModules.default
         ];
       };
-<<<<<<< HEAD
-      homeConfigurations."joshlee@sting" = inputs.home-manager.lib.homeManagerConfiguration {
-=======
       homeConfigurations."josh@silver" = home-manager.lib.homeManagerConfiguration {
->>>>>>> origin/darwin
         modules = [
           ./homes/joshlee.nix
         ];

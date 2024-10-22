@@ -4,7 +4,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "josh";
-  home.homeDirectory = lib.mkForce "/Users/josh";
+  home.homeDirectory = lib.mkDefault "/Users/josh";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 

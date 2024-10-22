@@ -1,13 +1,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "josh";
-
-  home.homeDirectory = "/home/josh";
-
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.username = lib.mkDefault "josh";
+  home.homeDirectory = lib.mkDefault "/home/josh";
+  home.stateVersion = lib.mkDefault "24.05";
 
   imports = [
     ../modules/home-manager/neovim.nix
@@ -22,16 +18,16 @@
   home.packages = [
     pkgs.thefuck
     pkgs.git
-    pkgs.wget
-    pkgs.gnumake
     pkgs.ranger
-    pkgs.vscode-langservers-extracted
     pkgs.nurl
     pkgs.btop
     pkgs.dnsutils
+    pkgs.wget
+    pkgs.gnumake
     pkgs.kubectl
     pkgs.kubectx
     pkgs.opentofu
+    pkgs.ansible
   ];
 
   home.sessionVariables = {
@@ -41,24 +37,14 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.htop = {
-    enable = true;
-  };
-
+  programs.htop.enable = true;
   programs.ssh.enable = true;
-  programs.ssh.matchBlocks = {
-    "new-vm.local" = {
-      checkHostIP = false;
-    };
-  };
-
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
-      theme = "bira";
+      plugins = lib.mkDefault [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
+      theme = lib.mkDefault "bira";
     };
   };
 }

@@ -48,15 +48,9 @@
         commit = false;
         rebase = true;
       };
-<<<<<<< HEAD
-      init = {
-        defaultBranch = "main";
-      };
-=======
       fetch = { prune = true; };
       push.autoSetupRemote = true;
       delta = { line-numbers = true; };
->>>>>>> origin/darwin
     };
   };
 }
