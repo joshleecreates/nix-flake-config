@@ -8,6 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     my-modules = {
+      url = "github:joshleecreates/nix-modules/main";
+      flake = false;
+    };
+    local-modules = {
       url = "git+file:../nix-modules";
       flake = false;
     };
@@ -53,11 +57,10 @@
     in
     {
       nixosConfigurations.kasti = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs; inherit self;};
         system = "x86_64-linux";
         modules = [ 
-          (import "${my-modules}/modules/default.nix")
-          (import ./hosts/kasti/configuration.nix { inherit self; inherit inputs; })
+          ./hosts/kasti/configuration.nix 
           inputs.home-manager.nixosModules.default
         ];
       };

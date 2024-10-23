@@ -80,11 +80,11 @@
     "homebrew-bundle": {
       "flake": false,
       "locked": {
-        "lastModified": 1729292976,
-        "narHash": "sha256-jDdFAJrKjPdlEvNs3seqAELIJxdoSFwEcrcnC/1aJVY=",
+        "lastModified": 1729641963,
+        "narHash": "sha256-FKI39JU4N3FkBnd0GMaQnKe/4ARgE//3MiDj3yYEprk=",
         "owner": "homebrew",
         "repo": "homebrew-bundle",
-        "rev": "6dd24ba3e950ac272f80d9d104cd2ae763b092b7",
+        "rev": "b1730f81cd41a54da7040accf00326f1fc2703aa",
         "type": "github"
       },
       "original": {
@@ -173,20 +173,37 @@
         "type": "github"
       }
     },
-    "my-modules": {
+    "local-modules": {
       "flake": false,
       "locked": {
-        "lastModified": 1729639912,
-        "narHash": "sha256-pOxZ3n3C4edcmkVj8APJHix+GbDIwodsCdUWgUlTPSU=",
+        "lastModified": 1729642998,
+        "narHash": "sha256-J/Ic22tXU8R/6WRens5aks5QMbJTPHvR/AZz0TsIOTo=",
         "ref": "refs/heads/main",
-        "rev": "6edf4fbd9fd217a8deab8e8b5b0ce132d481b0eb",
-        "revCount": 12,
+        "rev": "c4f4c0d48fdbfb77cbc78598c6d403973f286575",
+        "revCount": 16,
         "type": "git",
         "url": "file:../nix-modules"
       },
       "original": {
         "type": "git",
         "url": "file:../nix-modules"
+      }
+    },
+    "my-modules": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729642998,
+        "narHash": "sha256-J/Ic22tXU8R/6WRens5aks5QMbJTPHvR/AZz0TsIOTo=",
+        "owner": "joshleecreates",
+        "repo": "nix-modules",
+        "rev": "c4f4c0d48fdbfb77cbc78598c6d403973f286575",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joshleecreates",
+        "ref": "main",
+        "repo": "nix-modules",
+        "type": "github"
       }
     },
     "nix-darwin": {
@@ -283,6 +300,7 @@
         "homebrew-felixkratz": "homebrew-felixkratz",
         "homebrew-norwoodj": "homebrew-norwoodj",
         "homebrew-services": "homebrew-services",
+        "local-modules": "local-modules",
         "my-modules": "my-modules",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3"
