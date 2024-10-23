@@ -19,6 +19,7 @@
   home.packages = [
     pkgs.thefuck
     pkgs.git
+    pkgs.gh
     pkgs.ranger
     pkgs.nurl
     pkgs.btop
@@ -29,6 +30,8 @@
     pkgs.kubectx
     pkgs.opentofu
     pkgs.ansible
+    pkgs.talosctl
+    pkgs.argocd
   ];
 
   home.sessionVariables = {
@@ -44,7 +47,7 @@
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = lib.mkDefault [ "git" "thefuck" "kubectl" "vi-mode" "docker" ];
+      plugins = lib.mkDefault [ "aws" "git" "thefuck" "kubectl" "vi-mode" "docker" ];
       theme = lib.mkDefault "bira";
     };
   };

@@ -4,7 +4,7 @@ let user = "josh"; in
 
 {
   imports = [
-    ../../modules/darwin/homebrew.nix
+    ./homebrew.nix
   ];
   users.users.${user} = {
     isHidden = false;
@@ -12,7 +12,7 @@ let user = "josh"; in
   };
 
   home-manager.users.${user} = {
-    imports = [ ../../homes/joshlee.nix ];
+    imports = [ ./home.nix ];
   };
 
   services.nix-daemon.enable = true;

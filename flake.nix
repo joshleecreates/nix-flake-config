@@ -45,9 +45,14 @@
       url = "github:norwoodj/homebrew-tap";
       flake = false;
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, my-modules, homebrew-services, homebrew-felixkratz, homebrew-norwoodj, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
+
+  outputs = { self, nixpkgs, nixos-generators, home-manager, darwin, my-modules, homebrew-services, homebrew-felixkratz, homebrew-norwoodj, homebrew-core, homebrew-cask, homebrew-bundle, ... }@inputs:
     let 
       homebrew-services-patched = nixpkgs.legacyPackages.aarch64-darwin.applyPatches {
         name = "homebrew-services-patched";
@@ -61,6 +66,23 @@
         system = "x86_64-linux";
         modules = [ 
           ./hosts/kasti/configuration.nix 
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+      nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs; inherit self;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/workstation/configuration.nix 
+          inputs.home-manager.nixosModules.default
+          (nixos-generators.nixosModules.all-formats)
+        ];
+      };
+      nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs; inherit self;};
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/nixos-desktop/configuration.nix 
           inputs.home-manager.nixosModules.default
         ];
       };
