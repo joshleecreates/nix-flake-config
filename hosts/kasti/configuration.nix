@@ -2,6 +2,7 @@
 
 {
   imports = [
+    "${inputs.my-modules}/modules/default.nix"
     "${inputs.my-modules}/templates/workstation.nix"
     "${inputs.my-modules}/profiles/vm.nix"
     "${self}/users/josh.nix"
@@ -9,6 +10,11 @@
   ];
 
   networking.hostName = "kasti";
+
+  oci-services.enable = true;
+  environment.systemPackages = [
+    pkgs.docker-compose
+  ];
 
   home-manager.users.josh = {
     imports = [ "${self}/homes/josh.nix" ];
